@@ -60,7 +60,7 @@ end
 
 function main()
     opt = uiInitOptions(0)
-    opt_ptr = Ref(opt)
+    # opt_ptr = Ref(opt)
 
     err = uiInit(opt)
     if err != C_NULL
