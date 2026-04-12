@@ -25,9 +25,15 @@ $ julia --project=@. -e 'using PackageCompiler; create_app(".", "build", force=t
 
 $ ./build/bin/LibUiTest
 
+# on windows:
+$ cp libui.dll build/bin
+$ ./build/bin/LibUiTest.exe
+
 # on linux:
-LD_LIBRARY_PATH=. ./build/bin/LibUiTest
+$ cp libui.so build/bin
+$ LD_LIBRARY_PATH=. ./build/bin/LibUiTest
 
 # on mac:
-DYLD_LIBRARY_PATH=. ./build/bin/LibUiTest
+$ cp libui.dylib build/bin
+$ DYLD_LIBRARY_PATH=. ./build/bin/LibUiTest
 ```
