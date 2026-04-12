@@ -17,8 +17,15 @@ end
 const uiWindow = Ptr{Cvoid}
 const uiControl = Ptr{Cvoid}
 const uiButton = Ptr{Cvoid}
+const uiGrid = Ptr{Cvoid}
 const OnClosingFuncType = Ptr{Cvoid}
 const UserData = Ptr{Cvoid}
+
+const uiAlign = Cint
+uiAlignFill::Cint = 0
+uiAlignStart::Cint = 1
+uiAlignCenter::Cint = 2
+uiAlignEnd::Cint = 3
 
 uiInit=(o)->ccall((:uiInit,libui_lib),Cstring,(Ref{uiInitOptions},),o)
 uiFreeInitError=(err)->ccall((:uiFreeInitError,libui_lib),Cvoid,(Cstring,),err)
@@ -34,6 +41,7 @@ uiUninit=()->ccall((:uiUninit,libui_lib),Cvoid,(),)
 uiWindowOnClosing=(win, onClosing, data)->ccall((:uiWindowOnClosing,libui_lib),Cvoid,(Ptr{Cvoid},OnClosingFuncType,UserData),win,onClosing,data)
 uiButtonOnClicked=(c, func, data)->ccall((:uiButtonOnClicked,libui_lib),Cvoid,(Ptr{Cvoid},Ptr{Cvoid},UserData),c,func,data)
 uiMsgBox=(win,msg1,msg2)->ccall((:uiMsgBox,libui_lib),Cvoid,(uiWindow, Cstring, Cstring),win,msg1,msg2)
+uiGridAppend=(g,c,left,top,xspan,yspan,hexpand,halign,vexpand,valign)->ccall((:uiGridAppend,libui_lib),Cvoid,(uiGrid, uiControl, Cint, Cint, Cint, Cint, Cint, uiAlign, Cint, uiAlign),g,c,left,top,xspan,yspan,hexpand,halign,vexpand,valign)
 
 global already_quitted = false
 global w::uiWindow
@@ -70,8 +78,12 @@ function main()
     button = uiNewButton("Message Box")
     uiButtonOnClicked(button, onMsgBoxClicked, C_NULL);
 
-    # uiWindowSetChild(w, grid);
-    uiWindowSetChild(w, button);
+    uiGridAppend(grid, button,
+		0, 0, 1, 1,
+		0, uiAlignFill, 0, uiAlignFill);
+
+    uiWindowSetChild(w, grid);
+    # uiWindowSetChild(w, button);
 
     # println("window: ", w)
     # println("grid: ", grid)
