@@ -1,4 +1,4 @@
-# julia libui test
+# julia libui test (LibUiTest.jl)
 
 ![screenshot](./docs/screenshot.png)
 
