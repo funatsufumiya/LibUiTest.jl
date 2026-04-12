@@ -1,5 +1,7 @@
 # julia libui test
 
+![screenshot](./docs/screenshot.png)
+
 ## Run
 
 ```bash
