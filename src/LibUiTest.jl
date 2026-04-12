@@ -58,6 +58,16 @@ function onMsgBoxClick(b::uiButton, data::UserData)
 		"More detailed information can be shown here.")
 end
 
+function julia_main()
+    try
+        main()
+    catch
+        Base.invokelatest(Base.display_error, Base.catch_stack())
+        return 1
+    end
+    return 0
+end
+
 function main()
     opt = uiInitOptions(0)
     # opt_ptr = Ref(opt)
