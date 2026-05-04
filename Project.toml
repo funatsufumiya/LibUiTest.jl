@@ -2,3 +2,9 @@ name = "LibUiTest"
 uuid = "945ac890-5e65-4b1b-ab3d-566402b90650"
 version = "0.1.0"
 authors = ["Fumiya Funatsu <funatsu.fumiya@gmail.com>"]
+
+[deps]
+libui_ng_prebuilt_jll = "b42aaa73-0a05-4e59-960d-07cbce8fb00f"
+
+[compat]
+libui_ng_prebuilt_jll = "0.1.0"
