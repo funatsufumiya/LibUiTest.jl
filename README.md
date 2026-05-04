@@ -2,6 +2,10 @@
 
 ![screenshot](./docs/screenshot.png)
 
+## Dependencies
+
+- https://github.com/funatsufumiya/libui_ng_prebuilt_jll/
+
 ## Run
 
 ```bash
