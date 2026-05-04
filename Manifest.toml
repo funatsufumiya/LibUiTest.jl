@@ -4,6 +4,10 @@ julia_version = "1.12.6"
 manifest_format = "2.0"
 project_hash = "47691b6d3e77661625397e26d5d1afd07bf49aae"
 
+[[deps.Artifacts]]
+uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+version = "1.11.0"
+
 [[deps.LibUiTest]]
 deps = ["libui_ng_prebuilt_jll"]
 path = "."
@@ -11,7 +15,8 @@ uuid = "945ac890-5e65-4b1b-ab3d-566402b90650"
 version = "0.1.0"
 
 [[deps.libui_ng_prebuilt_jll]]
-git-tree-sha1 = "776ab637ae4568288605357decbe2e9eb19354ab"
+deps = ["Artifacts"]
+git-tree-sha1 = "2252bd82a4d295e44fe1baba91a7f6c6628af3d3"
 repo-rev = "main"
 repo-url = "https://github.com/funatsufumiya/libui_ng_prebuilt_jll.git"
 uuid = "b42aaa73-0a05-4e59-960d-07cbce8fb00f"

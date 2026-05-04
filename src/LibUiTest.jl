@@ -1,13 +1,21 @@
 module LibUiTest
 
-libui_lib = "libui.so"
+using libui_ng_prebuilt_jll
 
-@static if Sys.iswindows()
-   libui_lib = "libui.dll"
-elseif Sys.isapple()
-   libui_lib = "libui.dylib"
-else
-   libui_lib = "libui.so"
+# libui_lib = "libui.so"
+
+# @static if Sys.iswindows()
+#    libui_lib = "libui.dll"
+# elseif Sys.isapple()
+#    libui_lib = "libui.dylib"
+# else
+#    libui_lib = "libui.so"
+# end
+
+libui_lib = libui_ng_prebuilt_jll.get_lib_path()
+if isnothing(libui_lib)
+    println("[Error] libui not found (maybe this platform is not supported yet by libui_ng_prebuilt_jll)")
+    exit(1)
 end
 
 mutable struct uiInitOptions 
